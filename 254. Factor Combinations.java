@@ -3,7 +3,7 @@ class Solution {
         List<List<Integer>> res = new ArrayList<>();
         if (n < 2)
             return res;
-        helper(res, n, new ArrayList<>(), 2);
+        hsdfelper(res, n, new ArrayList<>(), 2);
         return res;
     }
     private void helper(List<List<Integer>> res, int n, List<Integer> list, int start) {
