@@ -1,0 +1,44 @@
+```java
+class Solution {
+    public int shortestWordDistance(String[] words, String word1, String word2) {
+        int res = words.length;
+        int last1 = -1, last2 = -1;
+        boolean isDiff = !word1.equals(word2);
+        boolean updated = false;
+
+        for (int i = 0; i < words.length; i++) {
+            if (words[i].equals(word1)) {
+                if (isDiff) {
+                     if (last2 != -1) {
+                        res = Math.min(res, i - last2);
+                    }
+                    last1 = i;
+                } else if (!updated) {
+                    updated = !updated;
+                    if (last2 != -1) {
+                        res = Math.min(res, i - last2);
+                    }
+                    last1 = i;
+                    continue;
+                }
+
+            }
+            if (words[i].equals(word2)) {
+                if (isDiff) {
+                    if (last1 != -1) {
+                        res = Math.min(res, i - last1);
+                    }
+                    last2 = i;
+                } else if (updated) {
+                    updated = !updated;
+                    res = Math.min(res, i - last1);
+                    last2 = i;
+                }
+
+
+            }
+        }
+        return res;
+    }
+}
+```
